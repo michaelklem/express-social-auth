@@ -7,15 +7,15 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
-
 var SQLiteStore = require('connect-sqlite3')(session);
-
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 var profileRouter = require('./routes/profile');
+const helmet = require("helmet");
+
 
 var app = express();
-
+app.use(helmet());
 app.locals.pluralize = require('pluralize');
 
 // view engine setup
